@@ -6,11 +6,11 @@ import {
   SafeAreaView,
   FlatList,
   ScrollView,
+  useColorScheme,
 } from "react-native";
 import React from "react";
 import Navbar from "./navbar";
 
-import { useNavigation } from "@react-navigation/native";
 import Cardnav from "./cardnav";
 
 const popularJobs = [
@@ -40,7 +40,7 @@ const popularJobs = [
   },
 ];
 const renderPopularJob = ({ item }) => (
-  <View style={styles.popularJobCard}>
+  <View style={[styles.popularJobCard]}>
     <View style={{ justifyContent: "space-between" }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <View
@@ -52,7 +52,6 @@ const renderPopularJob = ({ item }) => (
         >
           <View
             style={{
-              backgroundColor: "#fff",
               borderRadius: 40,
               width: 40,
               height: 40,
@@ -70,56 +69,12 @@ const renderPopularJob = ({ item }) => (
             />
           </View>
           <View>
-            <Text> {item.title}</Text>
-            <Text>{item.company}</Text>
+            <Text style={{}}> {item.title}</Text>
+            <Text style={{}}>{item.company}</Text>
           </View>
         </View>
-        <SafeAreaView>
-          <View style={styles.everything}>
-            <View style={styles.help}>
-              <View style={styles.one}>
-                <Image
-                  source={require("../assets/profile.png")}
-                  style={{ height: 90, width: 90, marginRight: 10 }}
-                />
-                <View style={{ flexDirection: "column" }}>
-                  <Text style={{ color: "#888888", fontSize: 26 }}>
-                    Welcome Back,
-                  </Text>
-                  <Text style={{ fontWeight: "bold", fontSize: 29 }}>
-                    Eric Atsu
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.imgback}>
-                <Image source={require("../assets/search.png")} />
-              </View>
-            </View>
-          </View>
 
-          <View>
-            <Navbar />
-            <Cardnav />
-          </View>
-          <View style={styles.head}>
-            <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-              Transaction
-            </Text>
-            <Text style={{ color: "dodgerblue", fontSize: 15 }}> See all </Text>
-          </View>
-
-          <ScrollView>
-            <View style={styles.shieesh}>
-              <FlatList
-                data={popularJobs}
-                renderItem={renderPopularJob}
-                keyExtractor={(item) => item.id}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-        <Text> {item.salary}</Text>
+        <Text style={{}}> {item.salary}</Text>
       </View>
     </View>
   </View>
@@ -127,8 +82,8 @@ const renderPopularJob = ({ item }) => (
 
 const Home = () => {
   return (
-    <ScrollView>
-      <SafeAreaView>
+    <SafeAreaView>
+      <ScrollView>
         <View style={styles.everything}>
           <View style={styles.help}>
             <View style={styles.one}>
@@ -137,7 +92,13 @@ const Home = () => {
                 style={{ height: 90, width: 90, marginRight: 10 }}
               />
               <View style={{ flexDirection: "column" }}>
-                <Text style={{ color: "#888888", fontSize: 26 }}>
+                <Text
+                  style={{
+                    color: "#888888",
+                    fontSize: 26,
+                    color: useColorScheme,
+                  }}
+                >
                   Welcome Back,
                 </Text>
                 <Text style={{ fontWeight: "bold", fontSize: 29 }}>
@@ -152,7 +113,6 @@ const Home = () => {
         </View>
 
         <View>
-          <Navbar />
           <Cardnav />
         </View>
         <View style={styles.head}>
@@ -170,8 +130,9 @@ const Home = () => {
             />
           </View>
         </ScrollView>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+      <View></View>
+    </SafeAreaView>
   );
 };
 
@@ -197,7 +158,7 @@ const styles = StyleSheet.create({
     height: 40,
     alignItems: "center",
     justifyContent: "center",
-    padding: 35,
+    padding: 30,
     marginTop: 10,
   },
   head: {

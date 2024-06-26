@@ -1,7 +1,14 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Navbar = () => {
+  const handleSetClick = () => {
+    navigation.navigate("SettingsScreen");
+  };
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.create}>
       <TouchableOpacity>
